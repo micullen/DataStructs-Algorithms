@@ -8,13 +8,13 @@ class Stack:
     def __init__(self):
         self.stack = []
 
-    def push(self, element) -> List:
+    def push(self, element: Any) -> List:
         """Insert element at top of stack (end of list)"""
         return self.stack.append(element)
 
     def pop(self) -> List:
         """Remove element from top of stack (end of list)"""
-        return self.stack[:-1]
+        return self.stack.pop()
 
     def length(self) -> int:
         """Returns the length of the stack"""
@@ -24,6 +24,18 @@ class Stack:
         """Empties the stack"""
         self.stack = []
         return self.stack
+
+    def top(self) -> Any:
+        """Returns the top of the stack"""
+        if len(self.stack) == 0:
+            return None
+        return self.stack[-1]
+
+    def get_stack(self) -> List:
+        return self.stack
+
+
+
 
 
 class Queue:
@@ -40,7 +52,7 @@ class Queue:
 
     def dequeue(self) -> List:
         """Remove element from front of queue (end of list)"""
-        return self.queue[:-1]
+        return self.queue.pop()
 
     def length(self) -> int:
         """Returns the length of the queue"""
@@ -49,6 +61,16 @@ class Queue:
     def empty(self) -> List:
         """Empties the queue"""
         self.queue = []
+        return self.queue
+
+    def front(self) -> Any:
+        """Returns the value at front of the queue"""
+        if len(self.queue) == 0:
+            return None
+        return self.queue[-1]
+
+    def get_queue(self) -> List:
+        """Returns whole queue"""
         return self.queue
 
 
@@ -148,17 +170,3 @@ class LinkedList:
             new_node = Node(data)
             new_node.next = n.next
             n.next = new_node
-
-
-
-
-
-
-
-
-
-
-
-
-
-
