@@ -22,15 +22,13 @@ Output: false
 Example 4:
 Input: "([)]"
 Output: false
-"""
 
-""" 
 To approach this problem we will use a stack. Add all opening parantheses to the stack, then if a closing paranthesis
 matches a bracket on the top of the stack, remove it as they match.
 """
 
-from structs import Stack
 
+from structs import Stack
 
 class Solution:
     @staticmethod
@@ -73,5 +71,3 @@ print(Solution.is_valid('[)'))
 print(Solution.is_valid('{[]}'))
 print(Solution.is_valid('([{}])'))
 print(Solution.is_valid('()[]{}'))
-
-
