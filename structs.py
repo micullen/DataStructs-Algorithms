@@ -35,9 +35,6 @@ class Stack:
         return self.stack
 
 
-
-
-
 class Queue:
     """
     A class to create an instance of a Queue data structure with methods of insertion and deletion, based on
@@ -154,6 +151,7 @@ class LinkedList:
             n.next = new_node
 
     def insert_at_index(self, index: int, data: Any) -> None:
+        """Inserts a node at a specific index"""
         if index == 0:
             new_node = Node(data)
             new_node.next = self.head
@@ -170,3 +168,101 @@ class LinkedList:
             new_node = Node(data)
             new_node.next = n.next
             n.next = new_node
+
+    def get_count(self) -> int:
+        """Returns the length of a linked list"""
+        n = self.head
+        if n is None:
+            return 0
+
+        count = 0
+        while n is not None:
+            count += 1
+            n = n.next
+
+        return count
+
+    def search_element(self, val: Any) -> bool:
+        """Checks for an element in the linked list"""
+        n = self.head
+        if n is None:
+            return False
+
+        while n is not None:
+            if n.data == val:
+                return True
+            else:
+                n = n.next
+
+        return False
+
+    def delete_at_start(self) -> None:
+        """Deletes first node from the list."""
+        if self.head is None:
+            print('List is empty')
+            return
+        self.head = self.head.next
+
+    def delete_at_end(self) -> None:
+        """Deletes last node from the list."""
+        if self.head is None:
+            print('List is empty')
+            return
+
+        n = self.head
+        while n.next.next is not None:
+            n = n.next
+        n.next = None
+
+    def delete_item_val(self, val: Any) -> None:
+        """Deletes item by value"""
+        if self.head is None:
+            print("List is empty")
+            return
+
+        # Delete first item
+        if self.head.data == val:
+            self.head = self.head.next
+            return
+
+        # Delete any others
+        n = self.head
+        while n.next is not None:
+            if n.next.data == val:
+                break
+            n = n.next
+
+        if n.next is None:
+            print("Item not found in list")
+        else:
+            n.next = n.next.next
+
+    def reverse_llist(self) -> None:
+        prev = None
+        n = self.head
+        while n is not None:
+            next = n.next
+            n.next = prev
+            prev = n
+            n = next
+        self.head = prev
+
+
+#
+#
+# llist = LinkedList()
+#
+# llist.insert_at_start(5)
+# llist.insert_at_start(4)
+# llist.insert_at_start(3)
+# llist.insert_at_start(1)
+#
+# print(llist)
+#
+# llist.insert_before_item(3, 2)
+#
+# print(llist)
+#
+# llist.reverse_llist()
+#
+# print(llist)
